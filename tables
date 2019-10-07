@@ -1,0 +1,48 @@
+
+CREATE TABLE Users (
+    user_id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    name VARCHAR(255),
+    email VARCHAR(255),
+    password VARCHAR(255)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE Users ADD INDEX(email);
+ALTER TABLE Users ADD INDEX(password);
+
+CREATE TABLE Workouts (
+    workout_id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    user_id INTEGER,
+    location_id INTEGER,
+    date VARCHAR(255),
+
+    CONSTRAINT Workouts_ibfk_1
+    FOREIGN KEY (user_id)
+    REFERENCES Users (user_id)
+    ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE Strength (
+    strength_id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    workout_id INTEGER NOT NULL,
+    strength_movement VARCHAR(250),
+    sets INTEGER,
+    reps INTEGER,
+
+    CONSTRAINT Strength_ibfk_1
+    FOREIGN KEY (workout_id)
+    REFERENCES Workouts (workout_id)
+    ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE Cardio (
+    cardio_id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    workout_id INTEGER NOT NULL,
+    cardio_movement TEXT,
+    minutes INTEGER,
+    intensity TEXT,
+
+    CONSTRAINT Cardo_ibfk_1
+    FOREIGN KEY (workout_id)
+    REFERENCES Workouts (workout_id)
+    ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
