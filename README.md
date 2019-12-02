@@ -17,5 +17,5 @@
     SQL<br>
     HTML<br>
     CSS<br>
-    Javascript<br>
+    JavaScript<br>
     jQuery</p>
