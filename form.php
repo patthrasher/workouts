@@ -2,15 +2,18 @@
 require_once "pdo.php";
 include "util.php";
 
-echo $_SESSION['user_id'];
-
-
 $check = new check;
 
 $check->not_logged_in();
 $check->cancel();
 
 if ( isset($_POST['add']) ) {
+
+  if ( $_SESSION['user_id'] == 22 ) { 
+     $_SESSION['error'] = "Editing test user not allowed";
+     header("Location: form.php");
+     return;
+
   if ( strlen($_POST['date']) < 1 ) {
     $_SESSION['error'] = "Date field must be filled out";
     header("Location: form.php");
