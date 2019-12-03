@@ -1,8 +1,8 @@
 <?php
 require_once "pdo.php";
 include "util.php";
-echo "Hello heroku 12/3";
-// echo $_SESSION['user_id'];
+
+echo $_SESSION['user_id'];
 
 
 $check = new check;
