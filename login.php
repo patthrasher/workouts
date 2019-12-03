@@ -1,6 +1,5 @@
 <?php
 require_once "util.php";
-
 $check = new check;
 $salt = 'Buh*loone_';
 
