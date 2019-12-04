@@ -137,7 +137,7 @@ class other {
 
       if ( $_SESSION['user_id'] == 22 ) { // blocks test user from deleting data
          $_SESSION['error'] = "Deleting test data not allowed";
-         header("Location: delete.php?workout_id=" . $row['workout_id']);
+         header("Location: delete.php?workout_id=" . $_GET['workout_id']);
          exit;
       }
 
