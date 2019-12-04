@@ -134,6 +134,13 @@ class other {
   function delete_workout() {
     global $pdo;
     if ( isset($_POST['delete']) ) {
+
+      if ( $_SESSION['user_id'] == 22 ) { // blocks test user from deleting data
+         $_SESSION['error'] = "Deleting test data not allowed";
+         header("Location: delete.php");
+         return;
+      }
+
       $stmt = $pdo->prepare('DELETE FROM Workouts WHERE workout_id = :wid');
       $stmt->execute(array(':wid' => $_POST['hidden_id']));
       $_SESSION['success'] = 'Workout Deleted';

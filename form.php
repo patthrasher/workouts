@@ -9,7 +9,7 @@ $check->cancel();
 
 if ( isset($_POST['add']) ) {
 
-  if ( $_SESSION['user_id'] == 22 ) {
+  if ( $_SESSION['user_id'] == 22 ) { // blocks test user from adding data
      $_SESSION['error'] = "Editing test user not allowed";
      header("Location: form.php");
      return;

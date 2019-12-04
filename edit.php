@@ -32,6 +32,13 @@ function loadCardio($pdo, $workout_id) {
 }
 
 if ( isset($_POST['save']) ) {
+
+  if ( $_SESSION['user_id'] == 22 ) { // blocks test user from editing data
+     $_SESSION['error'] = "Editing test user not allowed";
+     header("Location: edit.php");
+     return;
+  }
+
   if ( strlen($_POST['date']) < 1 ) {
     $_SESSION['error'] = "Date field must be filled outs";
     header("Location: edit.php?workout_id=" . $row['workout_id']);
